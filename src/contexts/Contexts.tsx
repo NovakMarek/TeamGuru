@@ -2,6 +2,7 @@ import React, { FC, ReactNode } from 'react';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 import { CurrentUserProvider } from '../providers/CurrentUserProvider';
+import { DialogProvider } from '../providers/DialogProvider';
 
 interface ContextsProps {
   children?: ReactNode;
@@ -10,7 +11,9 @@ interface ContextsProps {
 const Contexts: FC<ContextsProps> = ({ children }) => {
   return (
     <Router>
-      <CurrentUserProvider>{children}</CurrentUserProvider>
+      <CurrentUserProvider>
+        <DialogProvider>{children}</DialogProvider>
+      </CurrentUserProvider>
     </Router>
   );
 };
