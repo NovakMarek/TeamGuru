@@ -24,6 +24,7 @@ const FormTextField: FC<FormTextFieldProps & StandardTextFieldProps> = ({
         <TextField
           {...field}
           {...props}
+          value={field.value ?? ''}
           error={!!error}
           helperText={error?.message as string}
         />
