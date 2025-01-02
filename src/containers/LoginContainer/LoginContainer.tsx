@@ -6,6 +6,7 @@ import { LoginFormValues } from '../../forms/LoginForm/models/LoginFormValues';
 import { loginUser } from '../../lib/login/utils';
 import { useCurrentUserContext } from '../../contexts/useCurrentUserContext';
 import { useNavigate } from 'react-router';
+import SimpleAlert from '../../components/ui/SimpleAlert';
 
 const LoginContainer = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const LoginContainer = () => {
 
   return (
     <Container>
-      {error && <p>{error}</p>}
+      {error && <SimpleAlert message={error} />}
       <LoginForm handleSubmit={handleSubmit} />
     </Container>
   );
