@@ -1,9 +1,9 @@
-import React, { createContext, FC, useCallback, useState } from 'react';
+import React, { createContext, useState, useMemo } from 'react';
 import { CurrentUser } from '../models/User';
 
 export interface CurrentUserContextValue {
   currentUser: CurrentUser | null;
-  login: (user: CurrentUser) => void;
+  setUser: (user: CurrentUser) => void;
   logout: () => void;
 }
 
@@ -15,25 +15,28 @@ interface CurrentUserProviderProps {
   children?: React.ReactNode;
 }
 
-export const CurrentUserProvider: FC<CurrentUserProviderProps> = ({
-  children,
-}) => {
-  const [currentUser, setCurrentUser] = useState<CurrentUser | null>({
-    name: 'Jon Doe',
-    email: 'jon@doe.com',
-    location: 'New York City',
-  });
+export const CurrentUserProvider = ({ children }: CurrentUserProviderProps) => {
+  const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
 
-  const login = useCallback((user: CurrentUser) => {
+  const setUser = (user: CurrentUser) => {
     setCurrentUser(user);
-  }, []);
+  };
 
-  const logout = useCallback(() => {
+  const logout = () => {
     setCurrentUser(null);
-  }, []);
+  };
+
+  const contextValues = useMemo(
+    () => ({
+      currentUser,
+      setUser,
+      logout,
+    }),
+    [currentUser, setUser, logout],
+  );
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, login, logout }}>
+    <CurrentUserContext.Provider value={contextValues}>
       {children}
     </CurrentUserContext.Provider>
   );

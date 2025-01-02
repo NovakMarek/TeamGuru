@@ -13,7 +13,7 @@ const ProfileContainer = () => {
 
   return (
     <Container>
-      <UserProfileCard user={currentUser} />
+      <UserProfileCard address={currentUser.address} />
     </Container>
   );
 };

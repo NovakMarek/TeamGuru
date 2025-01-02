@@ -1,13 +1,12 @@
 import React, { FC } from 'react';
 
 import { Box, Typography } from '@mui/material';
-import { CurrentUser } from '../models/User';
 
 export interface UserProfileCardProps {
-  user: CurrentUser;
+  address: string;
 }
 
-const UserProfileCard: FC<UserProfileCardProps> = ({ user }) => {
+const UserProfileCard: FC<UserProfileCardProps> = ({ address }) => {
   return (
     <Box
       component="div"
@@ -19,12 +18,10 @@ const UserProfileCard: FC<UserProfileCardProps> = ({ user }) => {
       }}
     >
       <Typography variant="h5" sx={{ mb: 3 }}>
-        User Profile
+        Your address
       </Typography>
       <Box component="div">
-        <Typography variant="body1">Name: {user.name}</Typography>
-        <Typography variant="body1">Email: {user.email}</Typography>
-        <Typography variant="body1">Location: {user.location}</Typography>
+        <Typography variant="body1">{address}</Typography>
       </Box>
     </Box>
   );

@@ -1,8 +1,8 @@
 export interface User {
   name: string;
-  email: string;
+  username: string;
   password: string;
-  location: string;
+  address: string;
 }
 
-export type CurrentUser = Pick<User, 'name' | 'email' | 'location'>;
+export type CurrentUser = Pick<User, 'name' | 'username' | 'address'>;
