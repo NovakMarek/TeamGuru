@@ -9,7 +9,11 @@ interface EditAddressDialogProps {
 
 const EditAddressDialog = ({ onClose }: EditAddressDialogProps) => {
   return (
-    <SimpleDialog title="Update Address" onClose={onClose}>
+    <SimpleDialog
+      title="Update Address"
+      onClose={onClose}
+      contentText="Please enter your new address below to update your details. Make sure your address is correct before saving."
+    >
       <EditAddressContainer />
     </SimpleDialog>
   );

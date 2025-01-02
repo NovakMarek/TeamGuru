@@ -28,7 +28,7 @@ export const CurrentUserProvider = ({ children }: CurrentUserProviderProps) => {
 
   const logout = () => {
     setCurrentUser(null);
-    navigate('/login');
+    navigate('/');
   };
 
   const updateAddress = (newAddress: string) => {
