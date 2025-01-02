@@ -3,6 +3,7 @@ import React, {
   FC,
   ReactNode,
   useCallback,
+  useEffect,
   useState,
 } from 'react';
 
@@ -20,16 +21,20 @@ interface DialogProviderProps {
 }
 
 export const DialogProvider: FC<DialogProviderProps> = ({ children }) => {
-  const [dialog, setDialog] = useState<ReactNode | null>();
+  const [dialog, setDialog] = useState<ReactNode | null>(null);
+  const [dialogPortalNode, setDialogPortalNode] = useState<HTMLElement | null>(
+    null,
+  );
 
-  let dialogPortalNode = document.getElementById('dialog-portal');
-
-  if (!dialogPortalNode) {
-    dialogPortalNode = document.createElement('div');
-    dialogPortalNode.setAttribute('id', 'dialog-portal');
-
-    document.body.appendChild(dialogPortalNode);
-  }
+  useEffect(() => {
+    let portalNode = document.getElementById('dialog-portal');
+    if (!portalNode) {
+      portalNode = document.createElement('div');
+      portalNode.setAttribute('id', 'dialog-portal');
+      document.body.appendChild(portalNode);
+    }
+    setDialogPortalNode(portalNode);
+  }, []);
 
   const openDialog = useCallback((dialogComponent: ReactNode) => {
     setDialog(dialogComponent);
@@ -41,7 +46,7 @@ export const DialogProvider: FC<DialogProviderProps> = ({ children }) => {
 
   return (
     <DialogContext.Provider value={{ show: openDialog, close: closeDialog }}>
-      {dialog && createPortal(dialog, dialogPortalNode)}
+      {dialogPortalNode && dialog && createPortal(dialog, dialogPortalNode)}
       {children}
     </DialogContext.Provider>
   );
