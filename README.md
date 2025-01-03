@@ -1,3 +1,9 @@
+## Environment Variables
+This project requires the following environment variables to run:
+
+- `VITE_API_URL=https://api.openweathermap.org/geo/1.0`
+- `VITE_API_KEY`: Your API Key
+  
 ## Application Login Information
 
 To log in and use this application, you can use one of the following user accounts:
