@@ -1,3 +1,15 @@
+## Application Login Information
+
+To log in and use this application, you can use one of the following user accounts:
+
+## User 1
+- Username: jon
+- Password: password
+
+## User 2
+- Username: jane
+- Password: password
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
