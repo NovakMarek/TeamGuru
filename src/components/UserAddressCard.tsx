@@ -61,7 +61,7 @@ const UserAddressCard: FC<UserAddressCardProps> = ({
           <>
             <Typography variant="body1">Lat: {coordinates.lat}</Typography>
 
-            <Typography variant="body1">Lng: {coordinates.lng}</Typography>
+            <Typography variant="body1">Lon: {coordinates.lon}</Typography>
           </>
         )}
       </Box>
