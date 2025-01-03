@@ -16,11 +16,11 @@ export const useGetCoordinates = (address: string) => {
     queryFn: () =>
       customAxios
         .get(
-          `/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${
-            import.meta.env.VITE_GOOGLE_API_KEY
+          `direct?q=${encodeURIComponent(address)}&limit=1&appid=${
+            import.meta.env.VITE_API_KEY
           }`,
         )
-        .then(res => res.data.results[0].geometry.location as Location),
+        .then(res => res.data[0] as Location),
     enabled: !!address,
   });
 };

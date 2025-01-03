@@ -12,9 +12,13 @@ const EditAddressContainer = () => {
   const { close } = useDialogContext();
 
   const handleSubmit = (data: AddressFormValues) => {
-    updateAddress(data.address);
-    queryClient.invalidateQueries(getCoordinatesQueryKey());
-    close();
+    try {
+      updateAddress(data.address);
+      queryClient.invalidateQueries(getCoordinatesQueryKey());
+      close();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
